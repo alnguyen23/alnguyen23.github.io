@@ -1,21 +1,33 @@
 
 body {
-  background-color: darkgreen;
+  background-color: lightcoral;
 }
 
 #board {
   width: 440px;
   height: 440px;
   border: 1px solid white;
-  background-color: black;
+  background-color: rgb(242, 252, 151);
   position: relative;
 }
 
-#gameItem {
-  background-color: teal;
+/* Game Item Formatting (change name when finished) */
+#box {
+  background-color: rgb(168, 217, 233);
   width: 50px;
   height: 50px;
+  border-radius: 10px;
   position: absolute;
 /*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
 /*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
+}
+/* Game Item 2 Formatting for WASD-Key Players */
+#box2 {
+  background-color: rgb(157, 236, 157);
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  position: absolute;
+  left: 0px;
+  top: 75px;
 }
