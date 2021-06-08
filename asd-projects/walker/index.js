@@ -21,19 +21,20 @@ function runProgram(){
       "D": 68 //right
   }; //Magic numbers are eliminated because of hard-coded values for keys
 
+  //board variables (to keep box inside board)
   var boardWidth = $("#board").width();
   var boardHeight = $("#board").height();
 
-  var $box2 = $("#box2");
-
   // Game Item Objects
+  //box 1 variables
   var positionX = 0;
   var positionY = 0;
   var speedX = 0;
   var speedY = 0;
 
+  //box 2 variables
   var positionX2 = 0;
-  var positionY2 = 0;
+  var positionY2 = 60;
   var speedX2 = 0;
   var speedY2 = 0;
 
@@ -54,21 +55,36 @@ function runProgram(){
     //repositions the box depending on speedX and speedY
     repositionBox();
     //Fixes horizontal position and prevents box from going outside bounds
-     if (positionX > boardWidth - 50) {
-         speedX = speedX * -1;
-     } else if (positionX < 0) {
-         speedX = speedX * -1;
-     }
+    if (positionX > boardWidth - 50) {
+        speedX = speedX * -1;
+    } else if (positionX < 0) {
+        speedX = speedX * -1;
+    }
      //Fixes vertical position and prevents box from going outside bounds
-     if (positionY > boardWidth - 50) {
-         speedY = speedY * -1;
-     } else if (positionY < 0) {
-         speedY = speedY * -1;
-     }
+    if (positionY > boardHeight - 50) {
+        speedY = speedY * -1;
+    } else if (positionY < 0) {
+        speedY = speedY * -1;
+    }
     //redraws box using CSS after figuring out the new position
     redrawBox();
+
+    //repositioning and redrawing for box 2
+    repositionBox2();
+    if (positionX2 > boardWidth - 50) {
+        speedX2 = speedX2 * -1;
+    } else if (positionX2 < 0) {
+        speedX2 = speedX2 * -1;
+    }
+    //Fixes vertical position and prevents box from going outside bounds
+    if (positionY2 > boardHeight - 50) {
+        speedY2 = speedY2 * -1;
+    } else if (positionY2 < 0) {
+        speedY2 = speedY2 * -1;
+    }
+    redrawBox2();
   }
-  
+
   /* 
   Called in response to events.
   */
@@ -77,6 +93,8 @@ function runProgram(){
   function handleKeyUp(event) {
     speedX = 0;
     speedY = 0;
+    speedX2 = 0;
+    speedY2 = 0;
   }
 
   //Controls box movement depending on key press
@@ -93,12 +111,16 @@ function runProgram(){
     //CONTROLS FOR BOX 2
     if (event.which === KEY.A) {
         speedX2 = -5; //A -> left key
+        console.log("key a was pressed");
     } else if (event.which === KEY.D) {
         speedX2 = 5; //D -> right key
+        console.log("key d was pressed");
     } else if (event.which === KEY.W) {
         speedY2 = -5; //W -> up key
+        console.log("key w was pressed");
     } else if (event.which === KEY.S) {
         speedY2 = 5; //S -> down key
+        console.log("key s was pressed");
     }
   }
 
@@ -124,8 +146,8 @@ function runProgram(){
   }
 
   function repositionBox2() {
-     $("#box2").css("left", positionX); //draws box in new position using positionX as a new starting point
-     $("#box2").css("top", positionY); //draws box in new position using positionY as a new starting point
+     $("#box2").css("left", positionX2); //draws box in new position using positionX as a new starting point
+     $("#box2").css("top", positionY2); //draws box in new position using positionY as a new starting point
   }
 
   function endGame() {
