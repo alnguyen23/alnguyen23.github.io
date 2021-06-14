@@ -1,0 +1,122 @@
+                   -- PONG PLANNING EXERCISE --
+
+USER STORY/GAMEPLAY:
+
+=== Describe the gampelay ===
+- Pong is a two-player game in which each player has control of a single paddle,
+  placed on opposite sides of the screen.
+- The players hit the ball back and forth using the paddle and are limited by the
+  top and bottom boundaries. The ball bounces off until a player hits it.
+
+=== What are the conditions when the game begins? ===
+- If a player misses the ball, they lose a point.
+- The ball bounces off the borders, but someone has to hit the ball back in and
+  hope the other person misses in order to get the point.
+
+=== Does the game have an end? If so, what are the conditions for when it ends? ===
+- Yes, the game ends after a player earns 11 points.
+
+=== What "if"s will there be? ===
+- Conditions for game ending:
+    if (scoreP1 === 11) {
+        prompt("GAME OVER: Player 1 wins!");
+    } else if (scoreP2 === 11) {
+        prompt("GAME OVER: Player 2 wins!")
+    }
+
+- Conditions for which paddle is being controlled:
+  - WASD and arrow keys like in Walker projec
+    - There are only up and down keys since the paddle can't go left or right
+        //CONTROLS FOR PLAYER 1
+        if (event.which === KEY.W) {
+            //insert code here    
+        } else if (event.which === KEY.S) {
+            //insert code here
+        }
+        //CONTROLS FOR PLAYER 2
+        if (event.which === KEY.UP) {
+            //insert code here
+        } else if (event.which === KEY.DOWN) {
+            //insert code here
+        }
+
+- Conditions for the ball being hit (by paddle or off wall):
+  - Ball bounces off to the other direction
+  - Other player's score goes up because the player missed if it hits the wall
+
+        //if the ball's position is greater than the board's width, the ball bounces
+        back in the right direction
+        if (ballPositionX > boardWidth - ballWidth) {
+            ballSpeedX = ballSpeedX * -1;
+            //since the ball bounced off the wall, that means the other player missed,
+            and the person who hit the ball wins the point
+            scoreP1++;
+        
+        //if the ball's position is less than 0, the ball must bounce back off the
+        wall in order for it to not fly off the screen
+        } else if (positionX < 0) {
+            ballSpeedX = ballSpeedX * -1;
+            //since the ball bounced off the wall, that means the other player missed,
+            and the person who hit the ball wins the point
+            scoreP2++;
+        }
+  
+     -- (NOT SURE ABOUT THIS SECTION OF POSSIBLE CODE - JUST BRAINSTORMING) --
+  - Ball hitting paddle should require:
+    - (ballPositionX === boardWidth - paddleWidth*2)
+    //doubling the width to account for space paddle occupies inside the boardWidth
+    //the position must be equal to the paddleWidth's in order for it to touch
+    - ball's position must be within the height of the paddle in order for the ball
+      to touch the paddle -> if the position is outside, then it hits the wall
+    - either way, it should require the ball to bounce in the opposite direction
+
+VISUAL GAME COMPONENTS:
+
+=== What are the visual game components? ===
+- Animated:
+  - ball
+  - paddles
+- Static:
+  - boundary (dotted line in the center)
+  - background
+
+=== What data will you need to manage each game component? ===
+- Position
+  - player 1 position -> positionP1
+  - player 2 position -> positionP2
+- Speed 
+  - Speed of both players will most likely be the same
+  - player 1 speed (horizontal) -> speedXP1
+  - player 2 speed (horizontal) -> speedXP2
+  - player 1 speed (vertical) -> speedYP1
+  - player 2 speed (vertical) -> speedYP2
+- Score
+  - player 1 points -> scoreP1
+  - player 2 points -> scoreP2
+
+EVENTS/LOGIC:
+
+=== What events will occur in this game? ===
+- Keyboard events
+  - WASD key response
+  - arrow key response
+
+- Ball hitting paddle and wall
+
+=== How do those events affect the data of the program? ===
+- When the WASD keys are clicked:
+    1. The paddle has to move in the correct direction
+    2. ONLY player 1's paddle should move
+- When the arrow keys are clicked:
+    1. The paddle has to move in the correct direction
+    2. ONLY player 2's paddle should move
+- When the ball hits the wall:
+    1. The player in the opposite direction gets an additional point added 
+       to their score.
+    2. The ball should reverse direction after hitting the wall.
+    3. Game should go on uninterrupted until the end (may change depending on what
+       the to-do's call for).
+- When the ball hits the paddle:
+    1. The ball should bounce off the paddle, reversing direction.
+    2. Game should go on uninterrupted until the end (may change depending on what
+       the to-do's call for).
