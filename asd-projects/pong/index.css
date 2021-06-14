@@ -1,21 +1,92 @@
 
+/* OVERALL BACKGROUND */
 body {
-  background-color: darkgreen;
+  /* appearance */
+  background-color: rgb(177, 241, 177);
 }
 
+/* GAME BOARD */
 #board {
+  /* appearance */
   width: 440px;
   height: 440px;
-  border: 1px solid white;
-  background-color: black;
+  border: 3px solid white;
+  background-color: rgb(252, 253, 191);
+  /* positioning */
   position: relative;
 }
 
-#gameItem {
-  background-color: teal;
-  width: 50px;
-  height: 50px;
+/* BALL */
+#ball {
+  /* appearance */
+  background-color: rgb(172, 217, 235);
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+  /* positioning */
   position: absolute;
-/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
-/*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
+  left: 199px;
+  top: 205px;
+}
+
+/* LEFT PADDLE */
+#left_paddle {
+  /* appearance */
+  background-color: rgb(248, 213, 147);
+  width: 25px;
+  height: 120px;
+  border-radius: 10px;
+  /* positioning */
+  position: absolute;
+  left: 0px;
+  top: 167px;
+}
+
+/* RIGHT PADDLE */
+#right_paddle {
+  /* appearance */
+  background-color: rgb(248, 169, 169);
+  width: 25px;
+  height: 120px;
+  border-radius: 10px;
+  /* positioning */
+  position: absolute;
+  left: 415px;
+  top: 167px;
+}
+
+/* PLAYER 1 SCOREBOARD */
+#scoreP1 {
+  /* appearance */
+  background-color: rgb(209, 223, 250);
+  font-family: 'Courier New', Courier, monospace;
+  height: 75px;
+  width: 100px;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+  border-radius: 5px;
+  /* positioning */
+  position: absolute;
+  left: 0px;
+  top: 445px;
+}
+
+/* PLAYER 2 SCOREBOARD */
+#scoreP2 {
+  /* appearance */
+  background-color: rgb(209, 223, 250);
+  font-family: 'Courier New', Courier, monospace;
+  height: 75px;
+  width: 100px;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+  border-radius: 5px;
+  /* positioning */
+  position: absolute;
+  left: 330px;
+  top: 445px;
 }
