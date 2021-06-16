@@ -49,7 +49,7 @@ function runProgram(){
   var pointsP1 = 0;
   var pointsP2 = 0;
 
-  //BOARD -- used so that the paddle and balls do not go out of the board
+  //BOARD -- used so that the paddle and balls do not go out of the board & declares winner at the end of the game
   var board = gameObjInfo("#board");
 
   // one-time setup
@@ -153,7 +153,8 @@ function runProgram(){
   }
 
   //Controls ball movement
-  //If the random number is even, then the ball will move in the negative direction. If it's odd, it moves in the positive direction.
+  //If the random number is even, then the ball will move in the negative direction. 
+  //If it's odd, it moves in the positive direction.
   function moveBall() {
       //horizontal direction
     var directionX = ballDirection(2);
@@ -204,6 +205,7 @@ function runProgram(){
         ball.speedY = 0;
         ball.x = ballStartX;
         ball.y = ballStartY;
+        //scoring updates if the ball hits the left side (player 2 gets an additional point)
         pointsP2 = pointsP2 + 1;
         console.log("Player 2 Score: " + pointsP2);
         $("#scoreP2").text(pointsP2);
@@ -214,6 +216,7 @@ function runProgram(){
         ball.speedY = 0;
         ball.x = ballStartX;
         ball.y = ballStartY;
+        //scoring updates if the ball hits the right side (player 1 gets an additional point)
         pointsP1 = pointsP1 + 1;
         console.log("Player 1 Score: " + pointsP1);
         $("#scoreP1").text(pointsP1);
