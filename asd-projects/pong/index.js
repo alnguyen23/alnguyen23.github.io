@@ -46,6 +46,8 @@ function runProgram(){
   //SCOREBOARDS
   var scoreP1 = gameObjInfo("#scoreP1");
   var scoreP2 = gameObjInfo("#scoreP2");
+  var pointsP1 = 0;
+  var pointsP2 = 0;
 
   //BOARD -- used so that the paddle and balls do not go out of the board
   var board = gameObjInfo("#board");
@@ -129,15 +131,15 @@ function runProgram(){
   function handleKeyDown(event) {
     //CONTROLS FOR PLAYER 1
     if (event.which === KEY.W) {
-        player1.speedY = -3;
+        player1.speedY = -5;
     } else if (event.which === KEY.S) {
-        player1.speedY = 3;
+        player1.speedY = 5;
     }
     //CONTROLS FOR PLAYER 2
     if (event.which === KEY.UP) {
-        player2.speedY = -3;
+        player2.speedY = -5;
     } else if (event.which === KEY.DOWN) {
-        player2.speedY = 3;
+        player2.speedY = 5;
     }
   }
 
@@ -197,8 +199,6 @@ function runProgram(){
   //Resets ball to starting position and updates score if a paddle misses
   function resetBallAndScore() {
     var ballRightX = ball.x + ball.width;
-    var pointsP1 = 0;
-    var pointsP2 = 0;
     //if the ball hits the left side (as opposed to colliding with the paddle), the ball resets
     if (ball.x < 0) {
         ball.speedX = 0;
@@ -207,6 +207,7 @@ function runProgram(){
         ball.y = ballStartY;
         pointsP2 = pointsP2 + 1;
         console.log("Player 2 Score: " + pointsP2);
+        $("#scoreP2").text(pointsP2);
     }
     //if the ball hits the right of the board (as opposed to colliding with the paddle), the ball resets
     else if (ballRightX >= board.width) {
@@ -216,6 +217,17 @@ function runProgram(){
         ball.y = ballStartY;
         pointsP1 = pointsP1 + 1;
         console.log("Player 1 Score: " + pointsP1);
+        $("#scoreP1").text(pointsP1);
+    }
+    //end the game once a player hits 11 points
+    if (pointsP1 === 11) {
+        console.log("Player 1 Wins!");
+        $("#board").text("Player 1 Wins!");
+        endGame();
+    } else if (pointsP2 === 11) {
+        console.log("Player 2 Wins!");
+        $("#board").text("Player 2 Wins!");
+        endGame();
     }
   }
 

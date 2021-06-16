@@ -12,6 +12,9 @@ body {
   height: 440px;
   border: 3px solid white;
   background-color: rgb(252, 253, 191);
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  font-size: 50px;
   /* positioning */
   position: relative;
 }
@@ -60,6 +63,7 @@ body {
   /* appearance */
   background-color: rgb(209, 223, 250);
   font-family: 'Courier New', Courier, monospace;
+  font-size: 50px;
   height: 75px;
   width: 100px;
   text-align: center;
@@ -78,6 +82,7 @@ body {
   /* appearance */
   background-color: rgb(209, 223, 250);
   font-family: 'Courier New', Courier, monospace;
+  font-size: 50px;
   height: 75px;
   width: 100px;
   text-align: center;
