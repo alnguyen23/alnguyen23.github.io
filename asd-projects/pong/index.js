@@ -43,7 +43,7 @@ function runProgram(){
   var ballStartX = 199;
   var ballStartY = 205;
 
-  //SCOREBOARDS
+  //SCOREBOARDS & POINTS
   var scoreP1 = gameObjInfo("#scoreP1");
   var scoreP2 = gameObjInfo("#scoreP2");
   var pointsP1 = 0;
@@ -113,9 +113,8 @@ function runProgram(){
       ball.speedX = ball.speedX * -1
     }
 
-    //resets ball's position if ball hits the sides
-    resetBallAndScore();
-
+    //resets ball's position if ball hits the sides and updates the score
+    resetBallUpdateScore();
   }
   
   /* 
@@ -197,7 +196,7 @@ function runProgram(){
   }
 
   //Resets ball to starting position and updates score if a paddle misses
-  function resetBallAndScore() {
+  function resetBallUpdateScore() {
     var ballRightX = ball.x + ball.width;
     //if the ball hits the left side (as opposed to colliding with the paddle), the ball resets
     if (ball.x < 0) {
