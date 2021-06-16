@@ -5,6 +5,12 @@ body {
   background-color: rgb(177, 241, 177);
 }
 
+/* START SCREEN MESSAGE */
+#start_screen {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
 /* GAME BOARD */
 #board {
   /* appearance */

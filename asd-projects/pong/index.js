@@ -123,6 +123,7 @@ function runProgram(){
 
   //When the player clicks, the ball moves randomly
   function handleOnClick(event) {
+    $("#start_screen").remove();
     moveBall();      
   }
 
