@@ -39,10 +39,11 @@ function applyFilterNoBackground(filterFunction) {
 
           // uses background color as a reference and goes through to each color
           // if previous color was 150 before filter, then the color changes back to the background color
-          var backgroundColor = 150;
-          if (rgbNumbers[RED] === backgroundColor &&
-              rgbNumbers[GREEN] === backgroundColor &&
-              rgbNumbers[BLUE] === backgroundColor) {
+          var backgroundColorString = image[1][1];
+          var backgroundColorNum = rgbStringToArray(backgroundColorString);
+          if (rgbNumbers[RED] === backgroundColorNum[RED] &&
+              rgbNumbers[GREEN] === backgroundColorNum[GREEN] &&
+              rgbNumbers[BLUE] === backgroundColorNum[BLUE]) {
                 rgbString = rgbArrayToString(rgbNumbers);
                 image[r][c] = rgbString;
 
