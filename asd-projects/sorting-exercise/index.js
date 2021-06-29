@@ -17,19 +17,16 @@ The CSS ids you will work with are:
 async function bubbleSort(array) {
     // declares that the sorting is false
     var sorted = false;
-    // starts while statement that says while sorted is false, two loops occur:
-    while (!sorted) {
-        // one loops regularly
-        for (var i = 0; i < array.length; i++) {
-            // the has a higher index and compares itself to the other loop 
-            // if its value is less than that of the other loop, the two have to swap
-            for (var j = i + 1; j < array.length; j++) {
-                if (array[i].value > array[j].value) {
-                    swap(array, i, j);
-                    sorted = false;
-                    updateCounter(bubbleCounter);
-                    await sleep();
-                }
+    // two loops occur:
+    // one loops regularly
+    for (var i = 0; i < array.length; i++) {
+        // the has a higher index and compares itself to the other loop 
+        // if its value is less than that of the other loop, the two have to swap
+        for (var j = i + 1; j < array.length; j++) {
+            if (array[i].value > array[j].value) {
+                swap(array, i, j);
+                updateCounter(bubbleCounter);
+                await sleep();
             }
         }
     }
